@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>الیار کاظمی | درباره من</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #08111f;
+      --background-light: #0e1b2e;
+      --card: rgba(17, 31, 51, 0.8);
+      --text: #f4f7fb;
+      --muted: #aebbd0;
+      --primary: #6c63ff;
+      --secondary: #00d4ff;
+      --border: rgba(255, 255, 255, 0.1);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    body.light-mode {
+      --background: #eef3fb;
+      --background-light: #ffffff;
+      --card: rgba(255, 255, 255, 0.85);
+      --text: #172033;
+      --muted: #61708a;
+      --primary: #5148dd;
+      --secondary: #008db1;
+      --border: rgba(20, 40, 70, 0.12);
+      --shadow: 0 20px 50px rgba(52, 70, 100, 0.14);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      color: var(--text);
+      line-height: 2;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(108, 99, 255, 0.2), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(0, 212, 255, 0.14), transparent 28%),
+        var(--background);
+      transition: 0.3s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* منوی سایت */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 18px 0;
+      background: rgba(8, 17, 31, 0.72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light-mode nav {
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--secondary);
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .theme-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    /* بخش اصلی */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 15px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      border-radius: 999px;
+      color: var(--secondary);
+      background: rgba(0, 212, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: clamp(2.3rem, 6vw, 5rem);
+      line-height: 1.3;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 700px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      transform: translateY(-4px);
+    }
+
+    .button-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 10px 25px rgba(0, 212, 255, 0.18);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: transparent;
+    }
+
+    /* کارت پروفایل */
+    .profile-card {
+      position: relative;
+      padding: 35px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: -90px;
+      right: -70px;
+      width: 180px;
+      height: 180px;
+      background: var(--secondary);
+      filter: blur(70px);
+      opacity: 0.4;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      overflow: hidden;
+      border: 7px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .avatar img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .profile-card h2 {
+      margin-top: 18px;
+      font-size: 1.5rem;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+    }
+
+    /* بخش‌ها */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      margin-bottom: 8px;
+      font-size: 2rem;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .about-box {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box p {
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+
+    .about-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    /* کارت‌ها */
+    .skills-grid,
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card,
+    .project-card,
+    .timeline-item {
+      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--card);
+      transition: 0.3s;
+    }
+
+    .skill-card:hover,
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--secondary);
+    }
+
+    .skill-icon {
+      margin-bottom: 12px;
+      font-size: 2rem;
+    }
+
+    .skill-card h3,
+    .project-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .skill-card p,
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .project-number {
+      color: var(--secondary);
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    .project-card h3 {
+      margin-top: 7px;
+      font-size: 1.35rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .project-tags span {
+      padding: 2px 10px;
+      border-radius: 999px;
+      color: var(--secondary);
+      background: rgba(108, 99, 255, 0.15);
+      font-size: 0.75rem;
+    }
+
+    /* تایم‌لاین */
+    .timeline {
+      display: grid;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-right: 35px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 31px;
+      right: 14px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 0 6px rgba(0, 212, 255, 0.12);
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 6px;
+      color: var(--secondary);
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .quote {
+      margin-top: 30px;
+      padding: 25px;
+      border-right: 4px solid var(--secondary);
+      border-radius: 12px;
+      color: var(--muted);
+      background: rgba(0, 212, 255, 0.07);
+    }
+
+    /* فوتر */
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* دکمه بازگشت به بالا */
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      background: var(--primary);
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* انیمیشن */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* واکنش‌گرایی */
+    @media (max-width: 850px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      section {
+        padding: 60px 0;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- منوی سایت -->
+  <nav>
+    <div class="container nav-content">
+      <a class="logo" href="#home">الیار کاظمی</a>
+
+      <ul class="nav-links">
+        <li><a href="#about">درباره من</a></li>
+        <li><a href="#skills">علاقه‌مندی‌ها</a></li>
+        <li><a href="#projects">پروژه‌ها</a></li>
+        <li><a href="#future">برنامه آینده</a></li>
+      </ul>
+
+      <button class="theme-button" id="themeButton" title="تغییر حالت نمایش">
+        ☀️
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- بخش معرفی -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+
+        <div class="reveal">
+          <span class="badge">سلام، به صفحه شخصی من خوش آمدید</span>
+
+          <h1>
+            من <span>الیار کاظمی</span> هستم
+          </h1>
+
+          <p class="hero-description">
+            یک علاقه‌مند به دنیای فناوری، برنامه‌نویسی وب، ساخت ربات و طراحی
+            ماشین‌های هوشمند. همیشه تلاش می‌کنم چیزهای جدید یاد بگیرم و
+            ایده‌هایم را به پروژه‌های واقعی تبدیل کنم.
+          </p>
+
+          <div class="buttons">
+            <a class="button button-primary" href="#about">
+              بیشتر درباره من
+            </a>
+
+            <a class="button button-secondary" href="#projects">
+              مشاهده پروژه‌ها
+            </a>
+          </div>
+        </div>
+
+        <!-- تصویر پروفایل -->
+        <div class="profile-card reveal">
+          <div class="avatar">
+            <img src="me.png" alt="عکس الیار کاظمی">
+          </div>
+
+          <h2>الیار کاظمی</h2>
+          <p>برنامه‌نویس، سازنده و یادگیرنده</p>
+          <p>ایران · ۲۷ ساله</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- درباره من -->
+    <section id="about">
+      <div class="container">
+
+        <div class="section-title reveal">
+          <h2>درباره من</h2>
+          <p>چند خط درباره مسیر، علاقه‌ها و هدف‌های من</p>
+        </div>
+
+        <div class="about-box reveal">
+          <p>
+            سلام! من <span class="highlight">الیار کاظمی</span> هستم و در ایران زندگی می‌کنم.
+          </p>
+
+          <p>
+            در حال حاضر ۲۷ ساله هستم و بخش مهمی از زمانم را به یادگیری و ساخت پروژه‌های مختلف اختصاص می‌دهم.
+          </p>
+
+          <p>
+            من به برنامه‌نویسی وب، طراحی رابط‌های کاربری زیبا و ساخت نرم‌افزارهای کاربردی علاقه زیادی دارم.
+          </p>
+
+          <p>
+            یکی از جذاب‌ترین بخش‌های برنامه‌نویسی برای من، تبدیل یک ایده ساده به محصولی واقعی و قابل استفاده است.
+          </p>
+
+          <p>
+            به ساخت ربات‌ها و ماشین‌های هوشمند نیز علاقه‌مندم و دوست دارم در آینده پروژه‌هایی ترکیبی از نرم‌افزار و سخت‌افزار بسازم.
+          </p>
+
+          <p>
+            یادگیری برای من هیچ‌وقت به پایان نمی‌رسد و همیشه به دنبال تجربه کردن فناوری‌ها و ابزارهای جدید هستم.
+          </p>
+
+          <p>
+            من تلاش می‌کنم در مسیر کاری خودم خلاق، منظم و مسئولیت‌پذیر باشم.
+          </p>
+
+          <p>
+            همچنین به کار تیمی، اشتراک‌گذاری دانش و یادگیری از افراد باتجربه اهمیت زیادی می‌دهم.
+          </p>
+
+          <p>
+            هدف من این است که پروژه‌هایی بسازم که علاوه بر ظاهر مناسب، کاربردی، سریع و قابل توسعه باشند.
+          </p>
+
+          <p>
+            در سال‌های آینده قصد دارم مهارت‌هایم را در زمینه هوش مصنوعی، رباتیک،
+            اتوماسیون و توسعه نرم‌افزار گسترش بدهم.
+          </p>
+
+          <p>
+            تا پایان سال ۲۰۲۷ تصمیم دارم چند پروژه شخصی بزرگ را توسعه بدهم
+            و آن‌ها را به شکل حرفه‌ای منتشر کنم.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- علاقه‌مندی‌ها -->
+    <section id="skills">
+      <div class="container">
+
+        <div class="section-title reveal">
+          <h2>علاقه‌مندی‌ها و حوزه‌های فعالیت</h2>
+          <p>موضوعاتی که بیشترین انگیزه را برای یادگیری و ساختن به من می‌دهند</p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">🌐</div>
+            <h3>برنامه‌نویسی وب</h3>
+            <p>
+              ساخت وب‌سایت‌های مدرن، سریع، واکنش‌گرا و کاربرپسند با استفاده از
+              HTML، CSS و JavaScript.
+            </p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">🤖</div>
+            <h3>ساخت ربات</h3>
+            <p>
+              علاقه‌مند به طراحی ربات‌هایی هستم که بتوانند وظایف مختلف را به
+              صورت هوشمند و خودکار انجام دهند.
+            </p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">🚗</div>
+            <h3>ماشین‌های هوشمند</h3>
+            <p>
+              توسعه ایده‌هایی در زمینه ماشین‌های کنترلی، سیستم‌های خودکار و
+              ترکیب سخت‌افزار با نرم‌افزار.
+            </p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">🧠</div>
+            <h3>هوش مصنوعی</h3>
+            <p>
+              بررسی کاربردهای هوش مصنوعی برای ساخت دستیارها، ابزارهای خلاقانه
+              و سیستم‌های تصمیم‌گیرنده.
+            </p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">⚙️</div>
+            <h3>اتوماسیون</h3>
+            <p>
+              علاقه‌مند به ساده‌تر کردن کارهای تکراری با استفاده از ربات‌ها،
+              اسکریپت‌ها و نرم‌افزارهای کاربردی.
+            </p>
+          </div>
+
+          <div class="skill-card reveal">
+            <div class="skill-icon">💡</div>
+            <h3>ایده‌پردازی</h3>
+            <p>
+              تلاش می‌کنم ایده‌های جدید را به نمونه‌های اولیه تبدیل کنم و از
+              طریق تجربه، آن‌ها را بهتر کنم.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- پروژه‌ها -->
+    <section id="projects">
+      <div class="container">
+
+        <div class="section-title reveal">
+          <h2>پروژه‌های من</h2>
+          <p>پروژه‌هایی که قصد دارم آن‌ها را توسعه بدهم و کامل‌تر کنم</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="project-card reveal">
+            <span class="project-number">پروژه ۰۱</span>
+            <h3>Gem</h3>
+
+            <p>
+              یک پروژه خلاقانه و قابل توسعه که می‌تواند به بستری برای ارائه
+              ابزارهای هوشمند، مدیریت اطلاعات یا ساخت سرویس‌های دیجیتال تبدیل شود.
+            </p>
+
+            <div class="project-tags">
+              <span>Web App</span>
+              <span>AI</span>
+              <span>Innovation</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-number">پروژه ۰۲</span>
+            <h3>XenCoder</h3>
+
+            <p>
+              ایده‌ای برای ساخت یک ابزار برنامه‌نویسی هوشمند که به توسعه‌دهندگان
+              در نوشتن، اصلاح، توضیح و مدیریت کد کمک کند.
+            </p>
+
+            <div class="project-tags">
+              <span>Developer Tool</span>
+              <span>Code</span>
+              <span>Automation</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <span class="project-number">پروژه ۰۳</span>
+            <h3>ChatChatChat</h3>
+
+            <p>
+              یک پلتفرم گفتگو محور با تمرکز بر ارتباط ساده، سریع و جذاب میان
+              کاربران و امکان اضافه کردن قابلیت‌های هوشمند در آینده.
+            </p>
+
+            <div class="project-tags">
+              <span>Chat</span>
+              <span>Community</span>
+              <span>Real-time</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- برنامه آینده -->
+    <section id="future">
+      <div class="container">
+
+        <div class="section-title reveal">
+          <h2>برنامه من تا پایان سال ۲۰۲۷</h2>
+          <p>مسیر پیشنهادی من برای رشد، یادگیری و ساخت پروژه‌های بزرگ‌تر</p>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <h3>سال ۲۰۲۶ — پایه‌گذاری و نمونه اولیه</h3>
+            <p>
+              در این مرحله تمرکز من روی طراحی ایده‌های اصلی پروژه‌های Gem،
+              XenCoder و ChatChatChat، ساخت نمونه‌های اولیه، یادگیری فناوری‌های
+              مورد نیاز و مشخص کردن مسیر توسعه خواهد بود.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h3>نیمه اول سال ۲۰۲۷ — توسعه نسخه‌های اصلی</h3>
+            <p>
+              در این بازه تلاش می‌کنم نسخه‌های کاربردی‌تر پروژه‌ها را بسازم،
+              رابط کاربری آن‌ها را بهبود بدهم، قابلیت‌های هوشمند اضافه کنم و
+              آزمایش‌های مختلفی برای پیدا کردن مشکلات انجام دهم.
+            </p>
+          </div>
+
+          <div class="timeline-item reveal">
+            <h3>نیمه دوم سال ۲۰۲۷ — تکمیل و انتشار</h3>
+            <p>
+              هدف اصلی من تا پایان سال ۲۰۲۷ این است که پروژه‌ها را به نسخه‌ای
+              پایدارتر برسانم، مستندات مناسبی برای آن‌ها آماده کنم و در صورت
+              امکان، نسخه عمومی آن‌ها را منتشر کنم.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="quote reveal">
+          «هدف من فقط یاد گرفتن برنامه‌نویسی نیست؛ می‌خواهم با استفاده از
+          دانسته‌هایم، ابزارهایی بسازم که خلاقانه، مفید و قابل استفاده برای
+          دیگران باشند.»
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- فوتر -->
+  <footer>
+    <div class="container">
+      <p>ساخته شده با علاقه توسط الیار کاظمی © ۲۰۲۶</p>
+    </div>
+  </footer>
+
+  <!-- دکمه بازگشت به بالا -->
+  <button class="back-to-top" id="backToTop" title="بازگشت به بالا">
+    ↑
+  </button>
+
+  <script>
+    const themeButton = document.getElementById("themeButton");
+    const backToTop = document.getElementById("backToTop");
+    const body = document.body;
+
+    // تغییر حالت تاریک و روشن
+    themeButton.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
+
+      if (body.classList.contains("light-mode")) {
+        themeButton.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      } else {
+        themeButton.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+
+    // حفظ حالت انتخاب‌شده بعد از رفرش صفحه
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      body.classList.add("light-mode");
+      themeButton.textContent = "🌙";
+    }
+
+    // انیمیشن نمایش عناصر هنگام اسکرول
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    // نمایش دکمه بازگشت به بالا
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    // بازگشت به بالای صفحه
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>
